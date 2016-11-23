@@ -19,10 +19,11 @@ renderCalendar = (milestones) ->
   for milestone in milestones
     repoName = _.find(allRepos, (x) -> milestone.url.match(x)).split('/')[1]
     event = ical.addComponent 'VEVENT'
-    event.setSummary "[#{repoName}] #{milestone.title}"
+    event.setSummary "#{milestone.title} (#{repoName})"
     eventDate = new Date milestone.due_on
     eventDate.date_only = true
     event.setDate eventDate
+    event.setDescription milestone.url
 
   ical.toString()
 
