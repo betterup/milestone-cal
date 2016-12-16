@@ -23,7 +23,7 @@ renderCalendar = (milestones) ->
     eventDate = new Date milestone.due_on
     eventDate.date_only = true
     event.setDate eventDate
-    event.setDescription milestone.url
+    event.setDescription milestone.html_url
 
   ical.toString()
 
